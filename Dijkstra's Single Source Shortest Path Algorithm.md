@@ -1,6 +1,7 @@
-# Ex. No: 18C - Dijkstra's Single Source Shortest Path Algorithm
+# Ex. No: 12C - Dijkstra's Single Source Shortest Path Algorithm
 
 ## AIM:
+
 To write a Python program for **Dijkstra's single source shortest path algorithm**.
 
 ## ALGORITHM:
@@ -21,11 +22,84 @@ Create a `sptSet[]` array (shortest path tree set) to keep track of vertices who
 ## PYTHON PROGRAM
 
 ```
-ENTER YOUR CODE HERE
+# Python program for Dijkstra's single source shortest path algorithm. 
+# The program is for adjacency matrix representation of the graph
+
+# Library for INT_MAX
+import sys
+
+class Graph():
+
+	def __init__(self, vertices):
+		self.V = vertices
+		self.graph = [[0 for column in range(vertices)]
+					for row in range(vertices)]
+
+	def printSolution(self, dist):
+		print("Vertex   Distance from Source")
+		for node in range(self.V):
+			print(node, "           ", dist[node])
+
+	# A utility function to find the vertex with
+	# minimum distance value, from the set of vertices
+	# not yet included in shortest path tree
+	def minDistance(self, dist, sptSet):
+
+		# Initialize minimum distance for next node
+		min = sys.maxsize
+
+		# Search not nearest vertex not in the
+		# shortest path tree
+		for u in range(self.V):
+			if dist[u] < min and sptSet[u] == False:
+				min = dist[u]
+				min_index = u
+
+		return min_index
+
+	# Function that implements Dijkstra's single source
+	# shortest path algorithm for a graph represented
+	# using adjacency matrix representation
+	def dijkstra(self, src):
+
+		dist = [sys.maxsize] * self.V
+		dist[src] = 0
+		sptSet = [False] * self.V
+
+		for cout in range(self.V):
+		    x=self.minDistance(dist,sptSet)
+		    sptSet[x]=True
+		    for y in range(self.V):
+		        if self.graph[x][y]>0 and sptSet[y]==False and dist[y]>self.graph[x][y]+dist[x]:
+		            dist[y]=self.graph[x][y]+dist[x]
+			
+
+		self.printSolution(dist)
+
+# Driver program
+g = Graph(9)
+g.graph = [[0, 4, 0, 0, 0, 0, 0, 8, 0],
+		[4, 0, 8, 0, 0, 0, 0, 11, 0],
+		[0, 8, 0, 7, 0, 4, 0, 0, 2],
+		[0, 0, 7, 0, 6, 14, 0, 0, 0],
+		[0, 0, 0, 6, 0, 5, 0, 0, 0],
+		[0, 0, 4, 14, 5, 0, 2, 0, 0],
+		[0, 0, 0, 0, 0, 2, 0, 1, 6],
+		[8, 11, 0, 0, 0, 0, 1, 0, 7],
+		[0, 0, 2, 0, 0, 0, 6, 7, 0]
+		];
+
+g.dijkstra(0);
+
+
+
+
 ```
 
 ## OUTPUT
-```
-```
+![image](https://github.com/user-attachments/assets/97779150-b660-41d8-826a-64173dd458f2)
+
 
 ## RESULT
+
+Thus the python program was initialised and executed successfully.
