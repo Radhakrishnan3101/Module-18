@@ -1,4 +1,4 @@
-# Ex. No: 18D - Travelling Salesman Problem (TSP)
+# Ex. No: 12D - Travelling Salesman Problem (TSP)
 
 ## AIM:
 To write a Python program to find the shortest possible route that visits every city exactly once and returns to the starting point using the **Travelling Salesman Problem (TSP)** approach.
