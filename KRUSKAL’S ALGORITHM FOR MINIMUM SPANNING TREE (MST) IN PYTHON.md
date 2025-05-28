@@ -146,6 +146,7 @@ g.KruskalMST()
 ```
 
 OUTPUT
+
 ![image](https://github.com/user-attachments/assets/c9466c6b-9f9e-429f-b6c4-f4574a44bf56)
 
 
